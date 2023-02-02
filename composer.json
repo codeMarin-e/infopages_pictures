@@ -1,0 +1,35 @@
+{
+    "name": "marinar/infopages_pictures",
+    "description": "Infopages pictures addon",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marin Ivanov",
+            "email": "marin@dev.nddesign.no"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Marinar\\InfopagesPictures\\": "src/"
+        }
+    },
+    "require": {
+        "marinar/attachments": "^1.0",
+        "marinar/infopages": "^1.0"
+    },
+    "extra": {
+        "marinar": {
+            "module": false,
+            "plugin": false,
+            "addon_to": [
+                "marinar/infopages"
+            ]
+        },
+        "laravel": {
+            "aliases": {
+                "MarinarInfopagesPictures": "Marinar\\InfopagesPictures\\MarinarInfopagesPictures"
+            }
+        }
+    }
+}
