@@ -1,9 +1,9 @@
 <?php
-    namespace Marinar\InfopagesPictures\Traits;
+    namespace App\Traits;
 
     trait InfopagePicturesTrait {
 
-        use \Marinar\Attachments\Traits\Attachable;
+        use \App\Traits\Attachable;
 
         public static $attach_folder = 'infopages';
     }

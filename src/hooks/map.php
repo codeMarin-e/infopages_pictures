@@ -5,7 +5,7 @@ use Marinar\InfopagesPictures\MarinarInfopagesPictures;
 $packageDir = MarinarInfopagesPictures::getPackageMainDir();
 return [
     implode(DIRECTORY_SEPARATOR, [ base_path(), 'app', 'Models', 'Infopage.php']) => [
-        "// @HOOK_TRAITS" => "\tuse \\Marinar\\InfopagesPictures\\Traits\\InfopagePicturesTrait; \n",
+        "// @HOOK_TRAITS" => "\tuse \\App\\Traits\\InfopagePicturesTrait; \n",
     ],
     implode(DIRECTORY_SEPARATOR, [ base_path(), 'config','marinar_infopages.php']) => [
         "// @HOOK_INFOPAGES_CONFIGS_ADDONS" => "\t\t\\Marinar\\InfopagesPictures\\MarinarInfopagesPictures::class, \n",
