@@ -1,6 +1,8 @@
 <?php
     namespace Marinar\InfopagesPictures\Database\Seeders;
 
+    use App\Models\Attachment;
+    use App\Models\Infopage;
     use Illuminate\Database\Seeder;
     use Marinar\InfopagesPictures\MarinarInfopagesPictures;
 
@@ -19,5 +21,23 @@
             $this->autoRemove();
 
             $this->refComponents->info("Done!");
+        }
+
+        public function clearMe() {
+            $this->refComponents->task("Clear DB", function() {
+                try {
+                    \Illuminate\Support\Facades\DB::beginTransaction();
+                    foreach(Attachment::whereHasMorph('attachable', [Infopage::class])->where('type', 'pictures')->get() as $attachment) {
+                        $attachment->delete();
+                    }
+                    \Illuminate\Support\Facades\DB::commit();
+                } catch (\Exception $exception) {
+                    echo PHP_EOL.$exception->getMessage().PHP_EOL;
+                    // Don't Persist Changes to DB; Rollback
+                    \Illuminate\Support\Facades\DB::rollBack();
+                    return false;
+                }
+                return true;
+            });
         }
     }
